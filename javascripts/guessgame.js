@@ -1,6 +1,4 @@
 
-//global var (I think, not real sure on scope stuff in this language; maybe update to let user modify the correct answer based on their age/something
-var correctAnswer = 11;
 
 
 function retrieveGuess() {
@@ -14,17 +12,22 @@ function retrieveGuess() {
 	}
 };
 
-//takes and checks guess
-function checkGuess(guess) {
-	if (guess === CorrectAnswer) return true;
-	else return false;
-}
 
 function guessButtonHit() {
+        //public var; maybe update to let user modify the correct answer based on their age/something
+        this.correctAnswer = 11;
 	var guess = retrieveGuess();
-	if (checkGuess(guess)) {
+	//This line was becuase I was having some problems
+	//alert("I have reached the second line of this function with the " + typeof guess + " " + guess);
+	if (guess === this.CorrectAnswer) {
 		alert("Wow, you are correct! You know my age to within 5 years or so");
+	} else {
+		if (guess < this.CorrectAnswer) {
+			alert("A bit low. Feel free to try again (remember 1 does not count as prime)");
+		} else {
+			alert("A bit high. Feel free to try again (remember 1 does not count as prime)");
+		}
 	}
-	else alert("Not quite. Feel free to try again (remember 1 does not count as prime)");
-}
+
+};
 
