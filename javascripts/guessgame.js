@@ -1,9 +1,8 @@
-
-
+//Probably correctAnswer should be an attribute of some object, but for now, global variable. 
+var correctAnswer = 11;
 
 function retrieveGuess() {
-	//Storing the prompt string in a public variable in case we want to change it later
-	this.promptString = "Guess how many times my age in years has been a prime number!";
+	var promptString = "Guess how many times my age in years has been a prime number!";//maybe make this public/global so we can change it. 
 	var guess = prompt(promptString);
 	if  (guess == Number(guess)) return Number(guess);
 	else {
@@ -14,20 +13,49 @@ function retrieveGuess() {
 
 
 function guessButtonHit() {
-        //public var; maybe update to let user modify the correct answer based on their age/something
-        this.correctAnswer = 11;
 	var guess = retrieveGuess();
-	//This line was becuase I was having some problems
+	//Debug line becuase I was having some problems
 	//alert("I have reached the second line of this function with the " + typeof guess + " " + guess);
-	if (guess === this.CorrectAnswer) {
-		alert("Wow, you are correct! You know my age to within 5 years or so");
+	if (guess === correctAnswer) {
+		alert("Wow, you are correct! You know my age to within 5 years or so (assuming normal human ages)");
 	} else {
-		if (guess < this.CorrectAnswer) {
+		if (guess < correctAnswer) {
 			alert("A bit low. Feel free to try again (remember 1 does not count as prime)");
 		} else {
 			alert("A bit high. Feel free to try again (remember 1 does not count as prime)");
-		}
-	}
+		};
+	};
 
+};
+
+function isPrime(num) {
+	if (num === 1) return false; //kind of a special case
+	if (num === 2) return true; //kind of a special case, although it would still return true w/o this line
+	if (num === 3) return true; //The loop below doesn't work because it never executes for 3, although it would still return true w/o this line
+	if (num === 4) return false; //The loop below doesn't work because it never executes for 4
+	for (var i = 2; i < num/2; i++) {
+		if ((num % i) === 0) return false;
+	}
+	return true;
+};
+
+function countPrimes(num) {
+	var total = 0;
+	for (var i = 2; i<=num; i++) {
+		if (isPrime(i)) total++;
+	}
+	return total;
+};
+
+function resetButtonHit() {
+	var age = prompt("Enter my new age");
+	correctAnswer = countPrimes(age);
+	//Debug line below
+	//alert("The new correct answer is " + correctAnswer + " or " + countPrimes(age) + " for an age of " + age);
+	
+	/* //Troubleshooting prime checker function
+	for (var i = 2; i<10; i++) {
+		alert("For the number " + i + " isPrime = " + isPrime(i));
+	};*/
 };
 
