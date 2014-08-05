@@ -1,8 +1,8 @@
-//Probably correctAnswer should be an attribute of some object, but for now, global variable. 
+//Probably correctAnswer should be an attribute of some object, but for now, global variable.
 var correctAnswer = 11;
 
 function retrieveGuess() {
-	var promptString = "Guess how many times my age in years has been a prime number!";//maybe make this public/global so we can change it. 
+	var promptString = "Guess how many times my age in years has been a prime number!";//maybe make this public/global so we can change it.
 	var guess = prompt(promptString);
 	if  (guess == Number(guess)) return Number(guess);
 	else {
@@ -14,8 +14,6 @@ function retrieveGuess() {
 
 function guessButtonHit() {
 	var guess = retrieveGuess();
-	//Debug line becuase I was having some problems
-	//alert("I have reached the second line of this function with the " + typeof guess + " " + guess);
 	if (guess === correctAnswer) {
 		alert("Wow, you are correct! You know my age to within 5 years or so (assuming normal human ages)");
 	} else {
@@ -39,9 +37,9 @@ function isPrime(num) {
 	return true;
 };
 
-function countPrimes(num) {
+function countPrimes(num2) {
 	var total = 0;
-	for (var i = 2; i<=num; i++) {
+	for (var i = 2; i<=num2; i++) {
 		if (isPrime(i)) total++;
 	}
 	return total;
@@ -52,7 +50,7 @@ function resetButtonHit() {
 	correctAnswer = countPrimes(age);
 	//Debug line below
 	//alert("The new correct answer is " + correctAnswer + " or " + countPrimes(age) + " for an age of " + age);
-	
+
 	/* //Troubleshooting prime checker function
 	for (var i = 2; i<10; i++) {
 		alert("For the number " + i + " isPrime = " + isPrime(i));
