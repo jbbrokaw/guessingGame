@@ -1,0 +1,17 @@
+button {
+	background-color: orange;
+	padding: 5px, 10px, 5px, 5px;
+	color: purple;
+	text-align: center;
+  float: center;
+}
+h1 {
+  text-align: center;
+}
+div {
+  text-align: center;
+}
+button:hover {
+  color: #0000ff;
+  cursor: pointer;
+}
